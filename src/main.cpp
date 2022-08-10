@@ -6,18 +6,17 @@ int main(int argc, char *argv[])
 
     SDL_Texture* kaards=loadTexture("res/classic-playing-cards.png");
 
-    card heartsfive={
-        "diamonds",
-        12,
-        vec2_i(400,400)
-    };
+    SDL_Texture* BackFound=loadTexture("res/back_found.png");
+
+    init_deck();
+    
 
 	while (1)
 	{
 		prepareScene();
 
-        draw_card(kaards,heartsfive);
-
+        draw_field(kaards,BackFound);
+        
 		doInput();     
 
 		presentScene();

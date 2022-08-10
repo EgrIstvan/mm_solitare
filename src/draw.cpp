@@ -1,6 +1,6 @@
 void prepareScene(void)
 {
-	SDL_SetRenderDrawColor(app.renderer, 96, 128, 255, 255);
+	SDL_SetRenderDrawColor(app.renderer, 1, 171, 85, 255);
 	SDL_RenderClear(app.renderer);
 }
 
@@ -47,6 +47,42 @@ void draw_card(SDL_Texture *kaards,card kaard)
 	dest.y=kaard.pos.y;
 	dest.w=kaard.size.x;
 	dest.h=kaard.size.y;
+
+	SDL_RenderCopy(app.renderer, kaards, &src, &dest);
+}
+
+void draw_back(SDL_Texture *kaards,vec2_i loc,vec2_i size)
+{
+	SDL_Rect src;
+	SDL_Rect dest;
+
+	src.x = 1;
+	src.y = 1;
+	src.w = size.x;
+	src.h = size.y;
+
+	dest.x=loc.x;
+	dest.y=loc.y;
+	dest.w=size.x;
+	dest.h=size.y;
+
+	SDL_RenderCopy(app.renderer, kaards, &src, &dest);
+}
+
+void draw_found(SDL_Texture *kaards,vec2_i loc,vec2_i size)
+{
+	SDL_Rect src;
+	SDL_Rect dest;
+
+	src.x = 74;
+	src.y = 1;
+	src.w = size.x;
+	src.h = size.y;
+
+	dest.x=loc.x;
+	dest.y=loc.y;
+	dest.w=size.x;
+	dest.h=size.y;
 
 	SDL_RenderCopy(app.renderer, kaards, &src, &dest);
 }
