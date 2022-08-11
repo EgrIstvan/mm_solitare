@@ -17,7 +17,9 @@ int main(int argc, char *argv[])
 
         draw_field(kaards,BackFound);
         
-		doInput();     
+		doInput();
+
+        mouse_in();     
 
 		presentScene();
 

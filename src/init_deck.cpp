@@ -8,13 +8,15 @@ void init_deck(){
     suits[2]="hearts";
     suits[3]="diamonds";
 
-    for(int i=1;i<53;i++){
+    for(int i=0;i<4;i++){
+        for(int j=1;j<=13;j++){
         card kaard={
-            suits[i/13],
-            i%13==0?13:i%13,
+            suits[i],
+            j,
             vec2_i(0,0)
         };
         main.c.push_back(kaard);
+        }
     }
 
     for(int i=0;i<1024;i++){

@@ -1,11 +1,13 @@
 void draw_stock(SDL_Texture *BackFound,int fh){
     if(fh<1){
         draw_found(BackFound,vec2_i(100,50),vec2_i(72,96));
+        field_coll.stock=aabb(vec2_i(100,50),vec2_i(100+72,50+96));
         return;
     }
     for(int i=0;i<fh;i++){
         draw_back(BackFound,vec2_i(100-(i*3),50-(i*2)),vec2_i(72,96));
     }
+    field_coll.stock=aabb(vec2_i(100-((fh-1)*3),50-((fh-1)*2)),vec2_i(100-((fh-1)*3)+72,50-((fh-1)*2)+96));
 }
 
 void draw_waste(SDL_Texture *kaards,SDL_Texture *BackFound,card kaard){
@@ -52,7 +54,7 @@ void draw_tabeleau(SDL_Texture *kaards,SDL_Texture *BackFound,deck tableau[7],in
 }
 
 void draw_field(SDL_Texture *kaards,SDL_Texture *BackFound){
-    draw_stock(BackFound,field.stock.c.size()/3);
+    draw_stock(BackFound,ceil((float)field.stock.c.size()/3));
     draw_waste(kaards,BackFound,field.waste.c.back());
     
     deck found;

@@ -2,6 +2,7 @@
 #include <utility>
 #include <vector>
 #include <algorithm>
+#include <iterator>
 #include <map>
 #include <string>
 #include <cstdlib>
@@ -30,6 +31,18 @@ struct vec2_i {
 	vec2_i(float a,float b):x(a), y(b){}
 };
 
+struct vec2_int {
+    int x;
+    int y;
+	vec2_int(int a,int b):x(a), y(b){}
+};
+
+struct aabb {
+	vec2_i b;
+	vec2_i e;
+	aabb(vec2_i a,vec2_i b):b(a), e(b){}
+};
+
 struct card {
 	std::string suit;
 	int val;
@@ -50,7 +63,20 @@ struct Field{
 	int hidden[7];
 };
 
+struct FieldColl{
+	aabb stock=aabb(vec2_i(0,0),vec2_i(0,0));
+	aabb waste=aabb(vec2_i(0,0),vec2_i(0,0));
+	aabb foundation[4]={aabb(vec2_i(0,0),vec2_i(0,0)),aabb(vec2_i(0,0),vec2_i(0,0)),aabb(vec2_i(0,0),vec2_i(0,0)),aabb(vec2_i(0,0),vec2_i(0,0))};
+	aabb tableau[7]={aabb(vec2_i(0,0),vec2_i(0,0)),aabb(vec2_i(0,0),vec2_i(0,0)),aabb(vec2_i(0,0),vec2_i(0,0)),aabb(vec2_i(0,0),vec2_i(0,0)),aabb(vec2_i(0,0),vec2_i(0,0)),aabb(vec2_i(0,0),vec2_i(0,0)),aabb(vec2_i(0,0),vec2_i(0,0))};
+};
+
 Field field;
+FieldColl field_coll;
+card holding={
+    "",
+    0,
+    vec2_i(0,0)
+};
 App app;
 
 bool grnd=false;
@@ -60,4 +86,5 @@ bool grnd=false;
 #include "draw.cpp"
 #include "draw_field.cpp"
 #include "init.cpp"
+#include "mouse_in.cpp"
 #include "input.cpp"
