@@ -38,10 +38,12 @@ void init_deck(){
         vec2_i(0,0)
     };
 
+    holding.c.push_back(nullcard);
+
     field.waste.c.push_back(nullcard);
 
     field.foundation[0].c.push_back(nullcard);
     field.foundation[1].c.push_back(nullcard);
     field.foundation[2].c.push_back(nullcard);
-    field.foundation[2].c.push_back(nullcard);
+    field.foundation[3].c.push_back(nullcard);
 }

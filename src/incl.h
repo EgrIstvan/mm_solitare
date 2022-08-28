@@ -1,4 +1,5 @@
 #include <iostream>
+#include <array>
 #include <utility>
 #include <vector>
 #include <algorithm>
@@ -67,16 +68,13 @@ struct FieldColl{
 	aabb stock=aabb(vec2_i(0,0),vec2_i(0,0));
 	aabb waste=aabb(vec2_i(0,0),vec2_i(0,0));
 	aabb foundation[4]={aabb(vec2_i(0,0),vec2_i(0,0)),aabb(vec2_i(0,0),vec2_i(0,0)),aabb(vec2_i(0,0),vec2_i(0,0)),aabb(vec2_i(0,0),vec2_i(0,0))};
-	aabb tableau[7]={aabb(vec2_i(0,0),vec2_i(0,0)),aabb(vec2_i(0,0),vec2_i(0,0)),aabb(vec2_i(0,0),vec2_i(0,0)),aabb(vec2_i(0,0),vec2_i(0,0)),aabb(vec2_i(0,0),vec2_i(0,0)),aabb(vec2_i(0,0),vec2_i(0,0)),aabb(vec2_i(0,0),vec2_i(0,0))};
+	std::vector<aabb> tableau[7];
 };
 
 Field field;
 FieldColl field_coll;
-card holding={
-    "",
-    0,
-    vec2_i(0,0)
-};
+deck holding;
+
 App app;
 
 bool grnd=false;
